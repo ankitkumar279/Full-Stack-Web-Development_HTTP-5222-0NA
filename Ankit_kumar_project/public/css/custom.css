@@ -22,7 +22,6 @@ body {
   color: #1abc9c !important;
 }
 
-/* Buttons */
 .btn-primary {
   background-color: #1abc9c;
   border: none;
@@ -124,9 +123,6 @@ h1, h3 {
   margin-top: 5%;
 }
 
-/* custom.css */
-
-/* Card hover effect */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -137,7 +133,6 @@ h1, h3 {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-/* Buttons animation inside card */
 .card .btn {
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -146,7 +141,6 @@ h1, h3 {
   transform: translateY(-2px);
 }
 
-/* Optional: subtle color change for edit/delete */
 .btn-warning:hover {
   background-color: #e0a800 !important;
 }
@@ -155,7 +149,6 @@ h1, h3 {
   background-color: #c82333 !important;
 }
 
-/* Card image rounded on hover */
 .card img {
   transition: transform 0.3s ease;
 }
@@ -163,3 +156,4 @@ h1, h3 {
 .card:hover img {
   transform: scale(1.05);
 }
+
