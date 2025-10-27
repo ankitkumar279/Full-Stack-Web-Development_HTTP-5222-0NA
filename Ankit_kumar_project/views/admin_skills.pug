@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Skills
+  a.btn.btn-success.mb-3(href="/admin/skills/new") + Add Skill
+
+  if skills.length
+    .row.row-cols-1.row-cols-md-2.g-4
+      each s in skills
+        .col
+          .card.h-100.shadow-sm
+            .card-body
+              h5.card-title #{s.name}
+              p.mb-1 Level: #{s.level}
+              p.mb-1 Category: #{s.category || 'N/A'}
+            .card-footer.d-flex.justify-content-between
+              a.btn.btn-warning.btn-sm(href=`/admin/skills/${s._id}/edit`) Edit
+              form(method="POST" action=`/admin/skills/${s._id}?_method=DELETE`)
+                button.btn.btn-danger.btn-sm(type="submit") Delete
+  else
+    p No skills yet.

@@ -1,0 +1,23 @@
+//- form_project.pug
+extends layout
+
+block content
+  h1 #{project._id ? 'Edit Project' : 'Add Project'}
+  form(method="POST" action=project._id ? `/admin/projects/${project._id}?_method=PUT` : '/admin/projects')
+    label(for="title") Title
+    input.form-control(type="text" name="title" id="title" value=project.title || '' required)
+
+    label(for="description") Description
+    textarea.form-control(name="description" id="description") #{project.description || ''}
+
+    label(for="tech") Tech (comma separated)
+    input.form-control(type="text" name="tech" id="tech" value=project.tech ? project.tech.join(', ') : '')
+
+    label(for="link") Link
+    input.form-control(type="text" name="link" id="link" value=project.link || '')
+
+    label(for="image") Image URL
+    input.form-control(type="text" name="image" id="image" value=project.image || '')
+
+    br
+    button.btn.btn-primary(type="submit") #{project._id ? 'Update Project' : 'Save Project'}

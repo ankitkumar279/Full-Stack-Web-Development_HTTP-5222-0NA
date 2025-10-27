@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1 Projects
+    a.btn.btn-primary(href="/admin/projects/new") + Add Project
+
+  if projects.length
+    each p in projects
+      .card.mb-3.shadow-sm
+        .row.g-0
+          .col-md-4
+            if p.image
+              img.img-fluid.rounded-start(src=p.image, alt=p.title)
+            else
+              img.img-fluid.rounded-start(src="https://via.placeholder.com/150", alt=p.title)
+          .col-md-8
+            .card-body.d-flex.justify-content-between.align-items-center
+              .me-3
+                h5.card-title #{p.title}
+                p.card-text #{p.description}
+                p.card-text
+                  small.text-muted Tech: #{p.tech.join(', ')}
+                if p.link
+                  a.btn.btn-sm.btn-info.mt-2(href=p.link, target="_blank") Visit
+              .d-flex.flex-column.justify-content-between
+                a.btn.btn-sm.btn-warning.mb-2(href=`/admin/projects/${p._id}/edit`) Edit
+                form(method="POST", action=`/admin/projects/${p._id}?_method=DELETE`)
+                  button.btn.btn-sm.btn-danger(type="submit") Delete
+  else
+    p.text-muted No projects added yet.

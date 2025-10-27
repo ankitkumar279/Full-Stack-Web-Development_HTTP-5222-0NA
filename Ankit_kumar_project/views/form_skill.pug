@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  if skill && skill._id
+    - var formAction = `/admin/skills/${skill._id}?_method=PUT`
+    - var formTitle = 'Edit Skill'
+  else
+    - var formAction = '/admin/skills'
+    - var formTitle = 'Add New Skill'
+
+  h1.mb-4 #{formTitle}
+
+  form(method="POST" action=formAction)
+    .mb-3
+      label.form-label(for="name") Skill Name
+      input.form-control(type="text" name="name" id="name" placeholder="Enter skill name" required value=skill ? skill.name : '')
+    
+    .mb-3
+      label.form-label(for="level") Level
+      select.form-select(name="level" id="level")
+        option(value="") Select Level
+        option(value="Beginner" selected=skill && skill.level=='Beginner') Beginner
+        option(value="Intermediate" selected=skill && skill.level=='Intermediate') Intermediate
+        option(value="Advanced" selected=skill && skill.level=='Advanced') Advanced
+    
+    .mb-3
+      label.form-label(for="category") Category
+      input.form-control(type="text" name="category" id="category" placeholder="Enter category" value=skill ? skill.category : '')
+
+    button.btn.btn-success(type="submit") #{formTitle}
+    a.btn.btn-secondary.ms-2(href="/admin/skills") Cancel
